@@ -3,6 +3,12 @@
     	session_start();
 	}
 
+	$id_user = $_SESSION['idUsuario'];
+
+	if(!isset ($_SESSION['idUsuario'])) {
+    	header('Location: login.php');
+	}
+
 	require_once('evento/action/conexao.php');
 	date_default_timezone_set('America/Cuiaba');
 
@@ -10,7 +16,8 @@
 	$db = $database->conectar();
 
 	$sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status FROM eventos as e
-	LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento";
+	LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
+	Where fk_id_usuario = $id_user";
 	$req = $db->prepare($sql);
 	$req->execute();
 	$events = $req->fetchAll();
@@ -56,6 +63,27 @@
 				</div>
 			</div>
 			<!-- /.row -->
+
+			<!-- Valida data dos Modals -->
+			<script type="text/javascript">
+				function validaForm(erro) {
+					if(erro.inicio.value>erro.termino.value){
+						alert('Data de Inicio deve ser menor ou igual a de termino.');
+						return false;
+					}else if(erro.inicio.value==erro.termino.value){
+						alert('Defina um horario de inicio e termino.(24h)');
+						return false;
+					}
+				}
+			</script>
+
+
+			<!-- Modal Adicionar Evento -->
+			<?php include ('evento/modal/modalAdd.php'); ?>
+			
+			
+			<!-- Modal Editar/Mostrar/Deletar Evento -->
+			<?php include ('evento/modal/modalEdit.php'); ?>
 
 		</div>
 

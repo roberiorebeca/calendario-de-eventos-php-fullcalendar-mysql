@@ -22,7 +22,7 @@
                 $_SESSION['idUsuario'] = $id_usuario;
                 $_SESSION['nomeUsuario'] = $nome_usuario;
             }
-                header('Location: index.php');
+                header('Location: admin.php');
         }else {
             //Mensagem de erro no Login
             header('Location: login.php?erro=1');

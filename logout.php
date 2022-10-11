@@ -6,6 +6,6 @@ if(!isset($_SESSION)){
 if(isset($_SESSION)){
     session_destroy();
     echo "Saindo...";
-    header('Location: login.php');
+    header('Location: index.php');
 }
 ?>
