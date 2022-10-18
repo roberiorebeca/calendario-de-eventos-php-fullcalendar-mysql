@@ -4,7 +4,7 @@
     }
     date_default_timezone_set('America/Cuiaba');
 
-	require_once('../evento/action/conexao.php');
+	require_once('../config/conexao.php');
 	$database = new Database();
 	$db = $database->conectar();
 

@@ -2,7 +2,7 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    include ('evento/action/conexao.php');
+    include ('config/conexao.php');
     $database = new Database();
     $db = $database->conectar();
     

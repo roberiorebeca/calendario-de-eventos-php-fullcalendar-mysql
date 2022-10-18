@@ -5,7 +5,7 @@
 
     $id_user = $_SESSION['idUsuario'];
 
-    require_once('./evento/action/conexao.php');
+    require_once('../config/conexao.php');
 
     date_default_timezone_set('America/Cuiaba');
     $database = new Database();

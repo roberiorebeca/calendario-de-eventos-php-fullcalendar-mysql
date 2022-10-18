@@ -3,7 +3,7 @@
 		session_start();
 	}
 
-	require_once('conexao.php');
+	require_once('../../config/conexao.php');
 	$database = new Database();
 	$db = $database->conectar();
 
